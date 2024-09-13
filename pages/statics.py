@@ -19,7 +19,7 @@ plt.text(0.3, 0.3, '한글', size=100)
 #Text(0.3, 0.3, '한글')
 
 # cvs 파일 읽어오기
-df = pd.read_csv("saeol_data_combined.csv")
+df = pd.read_csv("saeol_data.csv")
 
 df['req_mon'] = pd.to_datetime(df['req_date']).dt.month # 한번 만들어지면 다음엔 주석처리할것
 df['req_year'] =pd.to_datetime(df['req_date']).dt.year # 한번 만들어지면 다음엔 주석처리할 것
@@ -40,7 +40,7 @@ wk_rank.plot(kind="bar",color=colors)
 plt.title(f"부서별 소요시간(상위 {num_rank} 부서)",fontsize=30)
 plt.xlabel("부서명",fontsize=20)
 plt.ylabel("소요시간",fontsize=20)
-plt.ylim(0,250)
+#plt.ylim(0,250)
 #plt.xticks(rotation=90)
 #plt.tight_layout()
 
@@ -88,7 +88,7 @@ plt.tight_layout()
 # 담당부서들이 많아서
 # num_request 건 이상인 부서들만 추려보았음
 
-num_request = 100
+num_request = 10
 
 df_dept_aboveNUM = df_dept[ df_dept['freq'] > num_request ]
 #print(df_dept_above100)
