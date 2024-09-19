@@ -21,10 +21,25 @@ plt.rc('font', family='NanumGothic')
 plt.text(0.3, 0.3, '한글', size=100)
 #Text(0.3, 0.3, '한글')
 
-#font 
-plt.rcParams['font.family'] = "NanumGothic"
-plt.rcParams['axes.unicode_minus']=False
 
+def unique(list):
+    x = np.array(list)
+    return np.unique(x)
+@st.cache_data
+def fontRegistered():
+    font_dirs = [os.getcwd() + '/customFonts']
+    font_files = fm.findSystemFonts(fontpaths=font_dirs)
+
+    for font_file in font_files:
+        fm.fontManager.addfont(font_file)
+    fm._load_fontmanager(try_read_cache=False)
+
+
+fontRegistered()
+fontNames = [f.name for f in fm.fontManager.ttflist]
+fontname = st.selectbox("폰트 선택", unique(fontNames))
+
+plt.rc('font', family=fontname)
 
 # cvs 파일 읽어오기
 df = pd.read_csv("saeol_data.csv")
