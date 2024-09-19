@@ -11,6 +11,7 @@ import streamlit as st
 import matplotlib.font_manager as fm
 
 for font in font_manager.fontManager.ttflist:
+    st.write(font.name)
     if 'Nanum' in font.name:
         print(font.name, font.fname)
 #    print(font.name)
