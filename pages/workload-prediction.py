@@ -27,10 +27,6 @@ distinct_colors = plt.cm.get_cmap('tab20c', 35)  # tab20c provides a diverse col
 #bars = ax.bar(range(35), sorted_data, color=distinct_colors(range(35)))
 #### cmap 끝
 
-# 한글 폰트
-
-fm.fontManager.addfont('/usr/share/fonts/truetype/nanum/NanumGothic.ttf')
-plt.rc('font', family='NanumGothic')
 
 st.header("이달의 업무량 예측",divider='green')
 #st.subheader("이 시스템은공무원을 위한 시스템입니다.")

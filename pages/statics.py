@@ -20,8 +20,6 @@ plt.text(0.3, 0.3, '한글', size=100)
 #Text(0.3, 0.3, '한글')
 
 
-fm.fontManager.addfont('/usr/share/fonts/truetype/nanum/NanumGothic.ttf')
-plt.rc('font', family='NanumGothic')
 
 # cvs 파일 읽어오기
 df = pd.read_csv("saeol_data.csv")
