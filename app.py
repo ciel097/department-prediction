@@ -10,4 +10,5 @@ st.title(':green[예측]')
 
 link_statics = st.link_button("민원 현황",url='statics')
 link_predict = st.link_button("담당 부서 예측",url='department-prediction')
+link_predict_workload = st.link_button("업무량 예측",url='workload-prediction')
 
