@@ -39,6 +39,7 @@ fontRegistered()
 fontNames = [f.name for f in fm.fontManager.ttflist]
 unique(fontNames)
 fontname = "NanumGothic"
+st.write(fontname)
 
 
 plt.rc('font', family=fontname)
