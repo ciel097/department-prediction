@@ -9,9 +9,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
 import matplotlib.font_manager as fm
+import os
 
 for font in font_manager.fontManager.ttflist:
-    st.write(font.name)
     if 'Nanum' in font.name:
         print(font.name, font.fname)
 #    print(font.name)
@@ -27,7 +27,7 @@ def unique(list):
     return np.unique(x)
 @st.cache_data
 def fontRegistered():
-    font_dirs = [os.getcwd() + '/customFonts']
+    font_dirs = [os.getcwd() + './customFonts']
     font_files = fm.findSystemFonts(fontpaths=font_dirs)
 
     for font_file in font_files:
@@ -37,7 +37,9 @@ def fontRegistered():
 
 fontRegistered()
 fontNames = [f.name for f in fm.fontManager.ttflist]
-fontname = st.selectbox("폰트 선택", unique(fontNames))
+unique(fontNames)
+fontname = "NanumGothic"
+
 
 plt.rc('font', family=fontname)
 

@@ -8,6 +8,7 @@ import numpy as np
 
 import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
+import os
 
 ## cmap  설정
 from matplotlib.colors import LinearSegmentedColormap
@@ -23,6 +24,30 @@ sorted_colors_custom = cmap(np.linspace(0, 1, 35))
 distinct_colors = plt.cm.get_cmap('tab20c', 35)  # tab20c provides a diverse color palette
 
 #### cmap 끝
+
+###### 한글 폰트설정
+def unique(list):
+    x = np.array(list)
+    return np.unique(x)
+@st.cache_data
+def fontRegistered():
+    font_dirs = [os.getcwd() + './customFonts']
+    font_files = fm.findSystemFonts(fontpaths=font_dirs)
+
+    for font_file in font_files:
+        fm.fontManager.addfont(font_file)
+    fm._load_fontmanager(try_read_cache=False)
+
+
+fontRegistered()
+fontNames = [f.name for f in fm.fontManager.ttflist]
+unique(fontNames)
+fontname = "NanumGothic"
+
+
+plt.rc('font', family=fontname)
+############
+
 
 
 st.header("이달의 업무량 예측",divider='green')
