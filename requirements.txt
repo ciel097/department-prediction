@@ -2,4 +2,7 @@ pandas
 matplotlib
 numpy
 train_test_split
+streamlit
+scikit-learn
+joblib
 
