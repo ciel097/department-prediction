@@ -8,6 +8,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
+import matplotlib.font_manager as fm
 
 for font in font_manager.fontManager.ttflist:
     if 'Nanum' in font.name:
@@ -17,6 +18,10 @@ for font in font_manager.fontManager.ttflist:
 plt.rc('font', family='NanumMyeongjo')
 plt.text(0.3, 0.3, '한글', size=100)
 #Text(0.3, 0.3, '한글')
+
+
+fm.fontManager.addfont('/usr/share/fonts/truetype/nanum/NanumGothic.ttf')
+plt.rc('font', family='NanumGothic')
 
 # cvs 파일 읽어오기
 df = pd.read_csv("saeol_data.csv")
