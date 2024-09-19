@@ -1,8 +1,3 @@
 pandas
 matplotlib
-train_test_split
-TfidfVectorizer
-accuracy_score
-load
-LinearSegmentedColormap
 numpy
