@@ -19,6 +19,13 @@ plt.rc('font', family='NanumMyeongjo')
 plt.text(0.3, 0.3, '한글', size=100)
 #Text(0.3, 0.3, '한글')
 
+#font list 
+font_list = fm.findSystemFonts()
+font_name = None
+for font in font_list:
+    if 'AppleGothic' in font :
+        font_name = fm.FintProperties(fname=font).get_name()
+plt.rc('font',family=font_name)
 
 
 # cvs 파일 읽어오기

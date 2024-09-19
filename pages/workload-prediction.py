@@ -22,9 +22,6 @@ sorted_colors_custom = cmap(np.linspace(0, 1, 35))
 # Generate 35 distinct colors using a colormap that spans a wide range of colors
 distinct_colors = plt.cm.get_cmap('tab20c', 35)  # tab20c provides a diverse color palette
 
-# Plot the bar graph with distinct colors for each bar
-#fig, ax = plt.subplots(figsize=(10, 6))
-#bars = ax.bar(range(35), sorted_data, color=distinct_colors(range(35)))
 #### cmap 끝
 
 
