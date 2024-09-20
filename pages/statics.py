@@ -20,8 +20,7 @@ def fontRegistered():
     font_files = fm.findSystemFonts(fontpaths=font_dirs)
 
     for font_file in font_files:
-        fm.fontManager.addfont(font_file)
-        st.write( fm.FontProperties(fname=font_file).get_name() )    
+        fm.fontManager.addfont(font_file)   
     fm._load_fontmanager(try_read_cache=False)
 
 fontRegistered()
