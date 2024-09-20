@@ -9,30 +9,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
 import matplotlib.font_manager as fm
-import os
 
-for font in font_manager.fontManager.ttflist:
-    if 'Nanum' in font.name:
-        print(font.name, font.fname)
-#    print(font.name)
-
-#plt.rc('font', family='NanumMyeongjo')
-plt.rc('font', family='NanumGothic')
-plt.text(0.3, 0.3, '한글', size=100)
-#Text(0.3, 0.3, '한글')
-
-
+######## 한글폰트 우리것으로 추가
 def unique(list):
     x = np.array(list)
     return np.unique(x)
 @st.cache_data
 def fontRegistered():
     font_dirs = './customFonts'
-    st.write(font_dirs)
-    st.write('----------------')
-    st.write(os.listdir(os.getcwd()))
-    st.write(os.listdir(font_dirs))
-    st.write("==========================")
     font_files = fm.findSystemFonts(fontpaths=font_dirs)
 
     for font_file in font_files:
@@ -43,9 +27,9 @@ def fontRegistered():
 fontRegistered()
 fontNames = [f.name for f in fm.fontManager.ttflist]
 unique(fontNames)
-fontname = "NanumGothic"
+fontname = 'NanumGothic'
 plt.rc('font', family=fontname)
-
+##########
 
 # cvs 파일 읽어오기
 df = pd.read_csv("saeol_data.csv")
