@@ -8,11 +8,29 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import accuracy_score
 from joblib import load
 
+import matplotlib.font_manager as fm
+import numpy as np
+######## 한글폰트 우리것으로 추가
+def unique(list):
+    x = np.array(list)
+    return np.unique(x)
+@st.cache_data
+def fontRegistered():
+    font_dirs = './customFonts'
+    font_files = fm.findSystemFonts(fontpaths=font_dirs)
+
+    for font_file in font_files:
+        fm.fontManager.addfont(font_file) 
+    fm._load_fontmanager(try_read_cache=False)
+
+fontRegistered()
+fontNames = [f.name for f in fm.fontManager.ttflist]
+unique(fontNames)
+fontname = 'NanumGothic'
+plt.rc('font', family=fontname)
+########## 
 
 complaint = st.text_area("민원 내용을 입력하세요",height=100)
-
-
-
 
 # 모델 불러오기
 vectorizer = load('tfidf_vectorizer.joblib')
@@ -43,10 +61,19 @@ if (st.button("예측")):
       top_classes = [loaded_model.classes_[i] for i in top_indices]
       top_probs = [probs[i] for i in top_indices]
 
-  st.write(complaint)
-  st.write(top_classes[0])
-  st.write(top_probs[0])
-  st.write(top_classes[1])
-  st.write(top_probs[1])
+
+  ## 그래프 그리기
+  fig_dept = plt.figure(figsize=(20, 6))
+  plt_class = [top_classes[1], top_classes[0]]
+  plt_prob = [top_probs[1], top_probs[0]] 
+  plt.barh(plt_class, plt_prob, color=['blue', 'red'])
+
+  # 그래프 제목과 축 라벨 추가
+  plt.title('담당부서 예측', fontsize=32, loc='left', pad=20)
+  plt.xlabel('확률', fontsize = 18)
+  plt.ylabel('담당부서', fontsize=18, rotation=90 )
+  plt.yticks(fontsize=32)
+
+  st.pyplot(fig_dept)
 
 
