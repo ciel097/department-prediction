@@ -27,7 +27,6 @@ def unique(list):
     return np.unique(x)
 @st.cache_data
 def fontRegistered():
-   # font_dirs = [os.getcwd() + './customFonts']
     font_dirs = './customFonts'
     st.write(font_dirs)
     st.write('----------------')
@@ -41,11 +40,10 @@ def fontRegistered():
         st.write( fm.FontProperties(fname=font_file).get_name() )    
     fm._load_fontmanager(try_read_cache=False)
 
-
 fontRegistered()
 fontNames = [f.name for f in fm.fontManager.ttflist]
-fontname = st.selectbox("폰트 선택", unique(fontNames))
-
+unique(fontNames)
+fontname = "NanumGothic"
 plt.rc('font', family=fontname)
 
 
