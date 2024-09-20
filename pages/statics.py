@@ -30,18 +30,20 @@ fontname = 'NanumGothic'
 plt.rc('font', family=fontname)
 ##########
 
-# cvs 파일 읽어오기
+# csv 파일 읽어오기
 df = pd.read_csv("saeol_data.csv")
 
 df['req_mon'] = pd.to_datetime(df['req_date']).dt.month # 한번 만들어지면 다음엔 주석처리할것
 df['req_year'] =pd.to_datetime(df['req_date']).dt.year # 한번 만들어지면 다음엔 주석처리할 것
 
-#############################################
-num_rank = 30 
+####### 부서별 민원 처리 소요시간
+num_dep = [10,30,50]
+num_rank = st.selectbox("부서수 선택", num_dep)
+
 start_date = pd.to_datetime(df["req_date"]) 
 end_date = pd.to_datetime(df["resp_date"])
 df["work_tm"] = end_date - start_date
-fig_wk = plt.figure(figsize=(20, 10))
+fig_wk = plt.figure(figsize=(20, 6))
 wk_tm = df.groupby("resp_dept")["work_tm"].mean().dt.days
 wk_tm = wk_tm.sort_values(ascending=False)
 wk_rank = wk_tm.iloc[0:num_rank]
@@ -49,19 +51,17 @@ wk_rank = wk_tm.iloc[0:num_rank]
 cmap = plt.get_cmap('prism')
 colors = [cmap(i / len(wk_rank)) for i in range(len(wk_rank))]
 wk_rank.plot(kind="bar",color=colors)
-plt.title(f"부서별 소요시간(상위 {num_rank} 부서)",fontsize=30)
+plt.title(f"부서별 소요시간(상위 {num_rank} 부서)",fontsize=30,pad=20)
 plt.xlabel("부서명",fontsize=20)
 plt.ylabel("소요시간",fontsize=20)
-#plt.ylim(0,250)
-#plt.xticks(rotation=90)
-#plt.tight_layout()
 
 st.pyplot(fig_wk)
 ########################################3
 
 # 원하는 연도의 부서별 민원 요청수
 
-year = 2023
+searching_year = [2023,2022,2021,2020,2019,2018,2017,2016,2015,2014]
+year = st.selectbox("연도 선택", searching_year)
 
 df_year = df[df['req_year'] == year ]
 
@@ -69,22 +69,17 @@ df_dept = df_year.groupby("resp_dept").size().reset_index(name="freq") # reset_i
 
 df_dept['freq'] = df_dept['freq'].astype(int)
 df_dept = df_dept.sort_values(by='freq', ascending=False)
-
-#print(df_dept.iloc[-80:,:])
-
 df_dept_above10 = df_dept[ df_dept['freq'] > 10 ]
-#print(df_dept_above10)
+
 
 # Colormap 설정
-#cmap = plt.get_cmap('nipy_spectral')
 cmap = plt.get_cmap('prism')
-
 # 색상 설정: colormap에서 각 카테고리마다 색을 자동으로 선택
 colors = [cmap(i / len(df_dept_above10['resp_dept'])) for i in range(len(df_dept_above10['resp_dept']))]
 
 fig_dept_above10 = plt.figure(figsize=(20, 6))
 plt.bar(df_dept_above10['resp_dept'], df_dept_above10['freq'],color=colors)
-plt.title(str(year)+'년 부서별 민원요청수')
+plt.title('부서별 민원요청수('+str(year)+'년 기준)',fontsize=30,pad=20)
 plt.xlabel('담당부서')
 plt.ylabel('요청수')
 plt.xticks(rotation=90)
@@ -92,7 +87,9 @@ plt.tight_layout()
 # 차트 보여주기
 #plt.show()
 
-#st.pyplot(fig_dept_above10)
+st.pyplot(fig_dept_above10)
+#########################################3
+
 
 
 #######################################
@@ -109,7 +106,7 @@ fig_df_dept_aboveNUM = plt.figure(figsize=(20, 6))
 plt.pie(df_dept_aboveNUM['freq'], labels=df_dept_aboveNUM['resp_dept'], autopct='%1.1f%%', startangle=90)
 
 # 차트 제목 추가
-plt.title(str(year)+ '년도 부서별 민원요청비율('+ str(num_request)+'건 이상)')
+plt.title('부서별 민원요청비율('+str(year)+'년 기준,'+ str(num_request)+'건 이상)',fontsize=30,pad=20)
 
 # 그래프를 원형으로 보이게 조정
 plt.axis('equal')
@@ -130,34 +127,31 @@ plt.bar( df_mon['req_mon'], df_mon['mon_freq'],color=colors )
 plt.xlim(0,13)
 plt.margins(x=0)
 # 차트 제목 추가
-plt.title('월별 전체 민원 요청수('+ str(year) + '년기준)')
+plt.title('월별 전체 민원 요청수('+ str(year) + '년기준)',fontsize=30,pad=20)
 
 # 차트 보여주기
 #plt.show()
 st.pyplot(fig_mon_dept)
 ############################################################
 # 월별 부서별 민원요청수
+searching_month = [1,2,3,4,5,6,7,8,9,10,11,12]
+cur_mon = 9
+str_select_mon = '해당 연도('+str(year)+'년)의 월 선택'
+selected_mon = st.selectbox(str_select_mon, searching_month,index=cur_mon-1)
 
-f, ax = plt.subplots(6, 2, figsize=(24,66))
-df_month = [0]*12
-df_mongrp = [0]*12
+fig_selected_mon = plt.figure( figsize=(20,6))
+df_month = [0]
+df_mongrp = [0]
 
-for i in range(12):
-  df_month[i] = df_year[df_year['req_mon']==i+1]
-  df_mongrp[i] = df_month[i].groupby("resp_dept").size().reset_index(name="mon_freq")
-  plt.subplot(12,1,i+1)
-  str_mon = str(i+1)
-  plt.title(str_mon+'월')
-
-  plt.bar(df_mongrp[i]['resp_dept'], df_mongrp[i]['mon_freq'],color=colors )
-  plt.xticks(rotation=90)
-  plt.margins(x=0)
-
-
+df_month = df_year[df_year['req_mon']==selected_mon]
+df_mongrp = df_month.groupby("resp_dept").size().reset_index(name="mon_freq")
+  
+plt.title(str(selected_mon)+'월')
+plt.bar(df_mongrp['resp_dept'], df_mongrp['mon_freq'],color=colors )
+plt.xticks(rotation=90)
+plt.margins(x=0)
 plt.tight_layout()
-# 차트 제목 추가
-plt.suptitle('월별 부서별 민원요청수(' +str(year) +'년기준)',fontsize=35)
-# 차트 보여주기
-#plt.show()
-st.pyplot(f)
+
+plt.title('해당연월('+str(year)+'년 '+str(selected_mon)+'월)의 부서별 민원요청수',fontsize=30,pad=20)
+st.pyplot(fig_selected_mon)
 ################################################################
