@@ -51,7 +51,7 @@ wk_tm = df.groupby("resp_dept")["work_tm"].mean().dt.days
 wk_tm = wk_tm.sort_values(ascending=False)
 wk_rank = wk_tm.iloc[0:num_rank]
 
-wk_rank.plot(kind="bar",color=colors5)
+wk_rank.plot.barh(color=colors5)
 plt.title(f"부서별 소요시간(상위 {num_rank} 부서)",fontsize=30,pad=20)
 plt.xlabel("부서명",fontsize=20)
 plt.ylabel("소요시간",fontsize=20)
@@ -75,11 +75,11 @@ df_dept = df_dept.sort_values(by='freq', ascending=False)
 df_dept_above10 = df_dept[ df_dept['freq'] > 10 ]
 
 fig_dept_above10 = plt.figure(figsize=(20, 6))
-plt.bar(df_dept_above10['resp_dept'], df_dept_above10['freq'],color=colors5)
+plt.barh(df_dept_above10['resp_dept'], df_dept_above10['freq'],color=colors5)
 plt.title('부서별 민원요청수('+str(year)+'년 기준)',fontsize=30,pad=20)
 plt.xlabel('담당부서',fontsize=20)
 plt.ylabel('요청수',fontsize=20)
-plt.xticks(rotation=90,fontsize=20)
+plt.xticks(fontsize=20)
 plt.yticks(fontsize=20)
 plt.tight_layout()
 # 차트 보여주기
@@ -146,11 +146,13 @@ df_mongrp = [0]
 
 df_month = df_year[df_year['req_mon']==selected_mon]
 df_mongrp = df_month.groupby("resp_dept").size().reset_index(name="mon_freq")
-  
+df_mongrp = df_mongrp.sort_values(by='mon_freq',ascending=False)  
+
+
 plt.title(str(selected_mon)+'월')
-plt.bar(df_mongrp['resp_dept'], df_mongrp['mon_freq'],color=colors5 )
-plt.xticks(rotation=90,fontsize=20)
-plt.yticks(fontsize=20)
+plt.barh(df_mongrp['resp_dept'], df_mongrp['mon_freq'],color=colors5 )
+plt.xticks(fontsize=20)
+plt.yticks( fontsize=20)
 plt.margins(x=0)
 plt.tight_layout()
 
