@@ -29,7 +29,10 @@ unique(fontNames)
 fontname = 'NanumGothic'
 plt.rc('font', family=fontname)
 ##########
-
+# color를 보기 좋은 색으로 설정
+colors5 = ['#F5A9A9','#F5BCA9', '#F5D0A9', '#F3E2A9'  ,'#D0F5A9' ,'#A9F5BC'  ,'#A9E2F3' ,'#A9D0F5' ,'#A9BCF5', '#A9A9F5']
+colors_pie= ['#F78181', '#F79F81', '#F7BE81', '#BEF781', '#81F7BE', '#81DAF5', '#81BEF7', '#819FF7', '#9F81F7']
+###################
 # csv 파일 읽어오기
 df = pd.read_csv("saeol_data.csv")
 
@@ -48,12 +51,12 @@ wk_tm = df.groupby("resp_dept")["work_tm"].mean().dt.days
 wk_tm = wk_tm.sort_values(ascending=False)
 wk_rank = wk_tm.iloc[0:num_rank]
 
-cmap = plt.get_cmap('prism')
-colors = [cmap(i / len(wk_rank)) for i in range(len(wk_rank))]
-wk_rank.plot(kind="bar",color=colors)
+wk_rank.plot(kind="bar",color=colors5)
 plt.title(f"부서별 소요시간(상위 {num_rank} 부서)",fontsize=30,pad=20)
 plt.xlabel("부서명",fontsize=20)
 plt.ylabel("소요시간",fontsize=20)
+plt.xticks(fontsize=20)
+plt.yticks(fontsize=20)
 
 st.pyplot(fig_wk)
 ########################################3
@@ -71,18 +74,13 @@ df_dept['freq'] = df_dept['freq'].astype(int)
 df_dept = df_dept.sort_values(by='freq', ascending=False)
 df_dept_above10 = df_dept[ df_dept['freq'] > 10 ]
 
-
-# Colormap 설정
-cmap = plt.get_cmap('prism')
-# 색상 설정: colormap에서 각 카테고리마다 색을 자동으로 선택
-colors = [cmap(i / len(df_dept_above10['resp_dept'])) for i in range(len(df_dept_above10['resp_dept']))]
-
 fig_dept_above10 = plt.figure(figsize=(20, 6))
-plt.bar(df_dept_above10['resp_dept'], df_dept_above10['freq'],color=colors)
+plt.bar(df_dept_above10['resp_dept'], df_dept_above10['freq'],color=colors5)
 plt.title('부서별 민원요청수('+str(year)+'년 기준)',fontsize=30,pad=20)
-plt.xlabel('담당부서')
-plt.ylabel('요청수')
-plt.xticks(rotation=90)
+plt.xlabel('담당부서',fontsize=20)
+plt.ylabel('요청수',fontsize=20)
+plt.xticks(rotation=90,fontsize=20)
+plt.yticks(fontsize=20)
 plt.tight_layout()
 # 차트 보여주기
 #plt.show()
@@ -94,16 +92,17 @@ st.pyplot(fig_dept_above10)
 
 #######################################
 
-# 담당부서들이 많아서
-# num_request 건 이상인 부서들만 추려보았음
-
+# 담당부서들이 많아서 num_request 건 이상인 부서들만 추려보았음
+# pie 차트
 num_request = 10
 
 df_dept_aboveNUM = df_dept[ df_dept['freq'] > num_request ]
 #print(df_dept_above100)
 # 파이차트 그리기
-fig_df_dept_aboveNUM = plt.figure(figsize=(20, 6))
-plt.pie(df_dept_aboveNUM['freq'], labels=df_dept_aboveNUM['resp_dept'], autopct='%1.1f%%', startangle=90)
+
+fig_df_dept_aboveNUM = plt.figure(figsize=(20, 10))
+textprops = {"fontsize":15} 
+plt.pie(df_dept_aboveNUM['freq'], labels=df_dept_aboveNUM['resp_dept'],colors=colors_pie, autopct='%1.1f%%', startangle=90,textprops=textprops)
 
 # 차트 제목 추가
 plt.title('부서별 민원요청비율('+str(year)+'년 기준,'+ str(num_request)+'건 이상)',fontsize=30,pad=20)
@@ -123,9 +122,11 @@ df_mon['mon_freq'] = df_mon['mon_freq'].astype(int)
 df_mon = df_mon.sort_values(by='mon_freq', ascending=False)
 
 fig_mon_dept = plt.figure(figsize=(20, 6))
-plt.bar( df_mon['req_mon'], df_mon['mon_freq'],color=colors )
+plt.bar( df_mon['req_mon'], df_mon['mon_freq'],color=colors5 )
 plt.xlim(0,13)
 plt.margins(x=0)
+plt.xticks(fontsize=20)
+plt.yticks(fontsize=20)
 # 차트 제목 추가
 plt.title('월별 전체 민원 요청수('+ str(year) + '년기준)',fontsize=30,pad=20)
 
@@ -147,8 +148,9 @@ df_month = df_year[df_year['req_mon']==selected_mon]
 df_mongrp = df_month.groupby("resp_dept").size().reset_index(name="mon_freq")
   
 plt.title(str(selected_mon)+'월')
-plt.bar(df_mongrp['resp_dept'], df_mongrp['mon_freq'],color=colors )
-plt.xticks(rotation=90)
+plt.bar(df_mongrp['resp_dept'], df_mongrp['mon_freq'],color=colors5 )
+plt.xticks(rotation=90,fontsize=20)
+plt.yticks(fontsize=20)
 plt.margins(x=0)
 plt.tight_layout()
 

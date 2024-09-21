@@ -66,7 +66,7 @@ if (st.button("예측")):
   fig_dept = plt.figure(figsize=(20, 6))
   plt_class = [top_classes[1], top_classes[0]]
   plt_prob = [top_probs[1], top_probs[0]] 
-  plt.barh(plt_class, plt_prob, color=['blue', 'red'])
+  plt.barh(plt_class, plt_prob, color=['#F3E2A9', '#A9E2F3'])
 
   # 그래프 제목과 축 라벨 추가
   plt.title('담당부서 예측', fontsize=32, loc='left', pad=20)
