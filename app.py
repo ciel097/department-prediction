@@ -8,7 +8,12 @@ st.caption("이것은 :blue[공무원]을 위한 시스템입니다.")
 
 st.title(':green[예측]')
 
-link_statics = st.link_button("민원 현황",url='statics')
-link_predict = st.link_button("담당 부서 예측",url='department-prediction')
-link_predict_workload = st.link_button("업무량 예측",url='workload-prediction')
+if st.button("담당 부서 예측"):
+    st.switch_page("pages/department-prediction.py")
+  
+if st.button("민원 현황"):
+    st.switch_page("pages/statics.py")
+
+if st.button("업무량 예측"):
+    st.switch_page("pages/workload-prediction.py")  
 
