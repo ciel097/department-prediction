@@ -29,6 +29,12 @@ unique(fontNames)
 fontname = 'NanumGothic'
 plt.rc('font', family=fontname)
 ########## 
+####### 사이드바(한글로)
+
+st.sidebar.page_link("pages/department-prediction.py", label="담당 부서 예측")
+st.sidebar.page_link("pages/statics.py", label="민원 현황")
+st.sidebar.page_link("pages/workload-predictions.py", label="업무량 예측")
+####################################
 
 complaint = st.text_area("민원 내용을 입력하세요",height=100)
 

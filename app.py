@@ -2,6 +2,12 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
+####### 사이드바(한글로)
+
+st.sidebar.page_link("pages/department-prediction.py", label="담당 부서 예측")
+st.sidebar.page_link("pages/statics.py", label="민원 현황")
+st.sidebar.page_link("pages/workload-predictions.py", label="업무량 예측")
+###########################################
 st.header("민원 담당부서 :blue[예측] 시스템",divider='green')
 #st.subheader("이 시스템은공무원을 위한 시스템입니다.")
 st.caption("이것은 :blue[공무원]을 위한 시스템입니다.")

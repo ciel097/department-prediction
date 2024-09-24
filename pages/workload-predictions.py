@@ -43,6 +43,12 @@ sorted_colors_custom = cmap(np.linspace(0, 1, 35))
 distinct_colors = plt.cm.get_cmap('tab20c', 35)  # tab20c provides a diverse color palette
 
 ##########
+####### 사이드바(한글로)
+
+st.sidebar.page_link("pages/department-prediction.py", label="담당 부서 예측")
+st.sidebar.page_link("pages/statics.py", label="민원 현황")
+st.sidebar.page_link("pages/workload-predictions.py", label="업무량 예측")
+###########################
 
 st.header("이달의 업무량 예측",divider='green')
 #st.subheader("이 시스템은공무원을 위한 시스템입니다.")

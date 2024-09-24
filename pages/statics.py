@@ -32,6 +32,13 @@ plt.rc('font', family=fontname)
 # color를 보기 좋은 색으로 설정
 colors5 = ['#F5A9A9','#F5BCA9', '#F5D0A9', '#F3E2A9'  ,'#D0F5A9' ,'#A9F5BC'  ,'#A9E2F3' ,'#A9D0F5' ,'#A9BCF5', '#A9A9F5']
 colors_pie= ['#F78181', '#F79F81', '#F7BE81', '#BEF781', '#81F7BE', '#81DAF5', '#81BEF7', '#819FF7', '#9F81F7']
+
+####### 사이드바(한글로)
+
+st.sidebar.page_link("pages/department-prediction.py", label="담당 부서 예측")
+st.sidebar.page_link("pages/statics.py", label="민원 현황")
+st.sidebar.page_link("pages/workload-predictions.py", label="업무량 예측")
+
 ###################
 # csv 파일 읽어오기
 df = pd.read_csv("saeol_data_all.csv")
