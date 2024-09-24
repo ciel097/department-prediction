@@ -15,5 +15,5 @@ if st.button("민원 현황"):
     st.switch_page("pages/statics.py")
 
 if st.button("업무량 예측"):
-    st.switch_page("pages/workload-prediction.py")  
+    st.switch_page("pages/workload-predictions.py")  
 
