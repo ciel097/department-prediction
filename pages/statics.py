@@ -94,7 +94,7 @@ st.pyplot(fig_dept_above10)
 
 # 담당부서들이 많아서 num_request 건 이상인 부서들만 추려보았음
 # pie 차트
-num_request = 80
+num_request = 100
 
 df_dept_aboveNUM = df_dept[ df_dept['freq'] > num_request ]
 #print(df_dept_above100)
