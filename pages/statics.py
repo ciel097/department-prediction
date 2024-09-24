@@ -34,12 +34,12 @@ colors5 = ['#F5A9A9','#F5BCA9', '#F5D0A9', '#F3E2A9'  ,'#D0F5A9' ,'#A9F5BC'  ,'#
 colors_pie= ['#F78181', '#F79F81', '#F7BE81', '#BEF781', '#81F7BE', '#81DAF5', '#81BEF7', '#819FF7', '#9F81F7']
 
 ####### 사이드바(한글로)
+st.sidebar.page_link("app.py", label="메인")
+st.sidebar.page_link("pages/department-prediction.py", label="민원 담당 부서 예측")
+st.sidebar.page_link("pages/statics.py", label="민원 처리 정보 안내")
+st.sidebar.page_link("pages/workload-predictions.py", label="이 달의 민원 업무량 예측")
+###########################################
 
-st.sidebar.page_link("pages/department-prediction.py", label="담당 부서 예측")
-st.sidebar.page_link("pages/statics.py", label="민원 현황")
-st.sidebar.page_link("pages/workload-predictions.py", label="업무량 예측")
-
-###################
 # csv 파일 읽어오기
 df = pd.read_csv("saeol_data_all.csv")
 
@@ -60,11 +60,12 @@ wk_rank = wk_tm.iloc[0:num_rank]
 
 wk_rank.plot.barh(color=colors5)
 plt.title(f"부서별 소요시간(상위 {num_rank} 부서)",fontsize=30,pad=20)
-plt.xlabel("부서명",fontsize=20)
-plt.ylabel("소요시간",fontsize=20)
+plt.ylabel("부서명",fontsize=20)
+plt.xlabel("소요시간",fontsize=20)
 plt.xticks(fontsize=20)
 plt.yticks(fontsize=20)
 
+st.caption("민원 처리 시간 데이터를 분석하여 부서별 평균 민원시간 예측")
 st.pyplot(fig_wk)
 ########################################3
     
@@ -84,8 +85,8 @@ df_dept_above10 = df_dept[ df_dept['freq'] > 10 ]
 fig_dept_above10 = plt.figure(figsize=(20, 12))
 plt.barh(df_dept_above10['담당과'], df_dept_above10['freq'],color=colors5)
 plt.title('부서별 민원요청수('+str(year)+'년 기준)',fontsize=30,pad=20)
-plt.xlabel('담당부서',fontsize=20)
-plt.ylabel('요청수',fontsize=20)
+plt.ylabel('담당부서',fontsize=20)
+plt.xlabel('요청수',fontsize=20)
 plt.xticks(fontsize=20)
 plt.yticks(fontsize=20)
 plt.tight_layout()

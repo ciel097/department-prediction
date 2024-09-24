@@ -43,12 +43,13 @@ sorted_colors_custom = cmap(np.linspace(0, 1, 35))
 distinct_colors = plt.cm.get_cmap('tab20c', 35)  # tab20c provides a diverse color palette
 
 ##########
-####### 사이드바(한글로)
 
-st.sidebar.page_link("pages/department-prediction.py", label="담당 부서 예측")
-st.sidebar.page_link("pages/statics.py", label="민원 현황")
-st.sidebar.page_link("pages/workload-predictions.py", label="업무량 예측")
-###########################
+####### 사이드바(한글로)
+st.sidebar.page_link("app.py", label="메인")
+st.sidebar.page_link("pages/department-prediction.py", label="민원 담당 부서 예측")
+st.sidebar.page_link("pages/statics.py", label="민원 처리 정보 안내")
+st.sidebar.page_link("pages/workload-predictions.py", label="이 달의 민원 업무량 예측")
+###########################################
 
 st.header("이달의 업무량 예측",divider='green')
 #st.subheader("이 시스템은공무원을 위한 시스템입니다.")
@@ -125,4 +126,6 @@ for index, value in enumerate(predicted_counts['민원']):
     plt.text(index, value, f"{value:.2%}", ha='center', va='bottom')
 
 st.pyplot(figure1)
-
+## str_comment f 스트링으로 위 결과값 넣어 수정할것
+str_comment = "이번 달 민원 예측 결과, 도시교통정책과가 전체 업무의 16.23%로 가장 높은 비중을 차지하며, 그 뒤를 도시대기관리과(6.02%)와 안전교통국(4.93%)이 따릅니다. 주요 부서들이 업무량을 크게 담당하는 가운데, 다양한 부서들이 고르게 참여할 것으로 예상됩니다."
+st.caption(str_comment)

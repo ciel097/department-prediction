@@ -29,14 +29,15 @@ unique(fontNames)
 fontname = 'NanumGothic'
 plt.rc('font', family=fontname)
 ########## 
+
 ####### 사이드바(한글로)
+st.sidebar.page_link("app.py", label="메인")
+st.sidebar.page_link("pages/department-prediction.py", label="민원 담당 부서 예측")
+st.sidebar.page_link("pages/statics.py", label="민원 처리 정보 안내")
+st.sidebar.page_link("pages/workload-predictions.py", label="이 달의 민원 업무량 예측")
+###########################################
 
-st.sidebar.page_link("pages/department-prediction.py", label="담당 부서 예측")
-st.sidebar.page_link("pages/statics.py", label="민원 현황")
-st.sidebar.page_link("pages/workload-predictions.py", label="업무량 예측")
-####################################
-
-complaint = st.text_area("민원 내용을 입력하세요",height=100)
+complaint = st.text_area("민원 내용을 입력하시면 담당부서를 예측해 드립니다.",height=100)
 
 # 모델 불러오기
 vectorizer = load('tfidf_vectorizer.joblib')
