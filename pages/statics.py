@@ -30,14 +30,18 @@ fontname = 'NanumGothic'
 plt.rc('font', family=fontname)
 ##########
 # color를 보기 좋은 색으로 설정
-colors5 = ['#F5A9A9','#F5BCA9', '#F5D0A9', '#F3E2A9'  ,'#D0F5A9' ,'#A9F5BC'  ,'#A9E2F3' ,'#A9D0F5' ,'#A9BCF5', '#A9A9F5']
+#colors_5 = ['#F5A9A9','#F5BCA9', '#F5D0A9', '#F3E2A9'  ,'#D0F5A9' ,'#A9F5BC'  ,'#A9E2F3' ,'#A9D0F5' ,'#A9BCF5', '#A9A9F5']
 colors_pie= ['#F78181', '#F79F81', '#F7BE81', '#BEF781', '#81F7BE', '#81DAF5', '#81BEF7', '#819FF7', '#9F81F7']
+colors_total = ['#F5BCA9', '#F6D8CE', '#F8E6E0', '#F5D0A9', '#F6E3CE', '#FFDAB9', '#FFE4B5', '#FFEFD5', '#FAFAD2', '#EEE8AA', '#E1F5A9', '#ECF6CE', '#F1F8E0', '#D0F5A9', '#E3F6CE', '#ECF8E0','#CEECF5', '#E0F8F7', '#CEE3F6', '#EFF5FB', '#CED8F6']
+colors_blue=['#A9E2F3']
+colors_5=['#F5BCA9','#F5BCA9','#F5BCA9','#F5BCA9','#F5BCA9','#FFEFD5','#FFEFD5','#FFEFD5','#FFEFD5','#FFEFD5','#ECF6CE','#ECF6CE','#ECF6CE','#ECF6CE','#ECF6CE', '#E0F8F7', '#E0F8F7', '#E0F8F7', '#E0F8F7', '#E0F8F7', '#CECEF6', '#CECEF6', '#CECEF6', '#CECEF6', '#CECEF6',  '#E6E6E6', '#E6E6E6', '#E6E6E6', '#E6E6E6', '#E6E6E6','#BDBDBD','#BDBDBD','#BDBDBD','#BDBDBD','#BDBDBD']
 
 ####### 사이드바(한글로)
 st.sidebar.page_link("app.py", label="메인")
 st.sidebar.page_link("pages/department-prediction.py", label="민원 담당 부서 예측")
 st.sidebar.page_link("pages/statics.py", label="민원 처리 정보 안내")
 st.sidebar.page_link("pages/workload-predictions.py", label="이 달의 민원 업무량 예측")
+st.sidebar.page_link("pages/chatbot.py", label="AI 챗봇")
 ###########################################
 
 # csv 파일 읽어오기
@@ -47,26 +51,37 @@ df['req_mon'] = pd.to_datetime(df['작성일']).dt.month # 한번 만들어지�
 df['req_year'] =pd.to_datetime(df['작성일']).dt.year # 한번 만들어지면 다음엔 주석처리할 것
 
 ####### 부서별 민원 처리 소요시간
-num_dep = [10,30,50]
-num_rank = st.selectbox("부서수 선택", num_dep)
+#num_dep = [10,30,50]
+#num_rank = st.selectbox("부서수 선택", num_dep)
 
-start_date = pd.to_datetime(df["작성일"]) 
-end_date = pd.to_datetime(df["답변일자"])
-df["work_tm"] = end_date - start_date
-fig_wk = plt.figure(figsize=(20, 6))
-wk_tm = df.groupby("담당과")["work_tm"].mean().dt.days
-wk_tm = wk_tm.sort_values(ascending=False)
-wk_rank = wk_tm.iloc[0:num_rank]
+#fig_wk_y = 6
+#if (num_rank == 10) :
+#  fig_wk_y = 6
+#elif(num_rank == 30):
+#  fig_wk_y = 12
+#elif(num_rank == 50):
+#  fig_wk_y = 18
+#else :
+#  fig_wk_y = 6
 
-wk_rank.plot.barh(color=colors5)
-plt.title(f"부서별 소요시간(상위 {num_rank} 부서)",fontsize=30,pad=20)
-plt.ylabel("부서명",fontsize=20)
-plt.xlabel("소요시간",fontsize=20)
-plt.xticks(fontsize=20)
-plt.yticks(fontsize=20)
+#start_date = pd.to_datetime(df["작성일"]) 
+#end_date = pd.to_datetime(df["답변일자"])
+#df["work_tm"] = end_date - start_date
+#fig_wk = plt.figure(figsize=(20, fig_wk_y))
+#wk_tm = df.groupby("담당과")["work_tm"].mean().dt.days
+#wk_tm = wk_tm.sort_values(ascending=False)
+#wk_rank = wk_tm.iloc[0:num_rank]
+###################################################
 
-st.caption("민원 처리 시간 데이터를 분석하여 부서별 평균 민원시간 예측")
-st.pyplot(fig_wk)
+#wk_rank.plot.barh(color=colors_5)
+#plt.title(f"부서별 소요시간(상위 {num_rank} 부서)",fontsize=30,pad=20)
+#plt.ylabel("부서명",fontsize=20)
+#plt.xlabel("소요시간",fontsize=20)
+#plt.xticks(fontsize=20)
+#plt.yticks(fontsize=20)
+
+#st.pyplot(fig_wk)
+#st.caption("민원 처리 시간 데이터를 분석하여 부서별 평균 민원시간 예측")
 ########################################3
     
 # 원하는 연도의 부서별 민원 요청수
@@ -83,7 +98,7 @@ df_dept = df_dept.sort_values(by='freq', ascending=False)
 df_dept_above10 = df_dept[ df_dept['freq'] > 10 ]
 
 fig_dept_above10 = plt.figure(figsize=(20, 12))
-plt.barh(df_dept_above10['담당과'], df_dept_above10['freq'],color=colors5)
+plt.barh(df_dept_above10['담당과'], df_dept_above10['freq'],color=colors_5)
 plt.title('부서별 민원요청수('+str(year)+'년 기준)',fontsize=30,pad=20)
 plt.ylabel('담당부서',fontsize=20)
 plt.xlabel('요청수',fontsize=20)
@@ -130,7 +145,7 @@ df_mon['mon_freq'] = df_mon['mon_freq'].astype(int)
 df_mon = df_mon.sort_values(by='mon_freq', ascending=False)
 
 fig_mon_dept = plt.figure(figsize=(20, 12))
-plt.bar( df_mon['req_mon'], df_mon['mon_freq'],color=colors5 )
+plt.bar( df_mon['req_mon'], df_mon['mon_freq'],color=colors_blue )
 plt.xlim(0,13)
 plt.margins(x=0)
 plt.xticks(fontsize=20)
@@ -158,7 +173,7 @@ df_mongrp = df_mongrp.sort_values(by='mon_freq',ascending=False)
 
 
 plt.title(str(selected_mon)+'월')
-plt.barh(df_mongrp['담당과'], df_mongrp['mon_freq'],color=colors5 )
+plt.barh(df_mongrp['담당과'], df_mongrp['mon_freq'],color=colors_5 )
 plt.xticks(fontsize=20)
 plt.yticks( fontsize=20)
 plt.margins(x=0)
