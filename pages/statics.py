@@ -1,10 +1,4 @@
-
-#!apt install fonts-nanum
 from matplotlib import font_manager, rc
-#!sudo apt-get install -y fonts-nanum
-#!sudo fc-cache -fv
-#!rm ~/.cache/matplotlib -rf
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -84,6 +78,7 @@ df['req_year'] =pd.to_datetime(df['작성일']).dt.year # 한번 만들어지면
 #st.pyplot(fig_wk)
 #st.caption("민원 처리 시간 데이터를 분석하여 부서별 평균 민원시간 예측")
 ########################################3
+    
 
 # 원하는 연도의 부서별 민원 요청수
 
@@ -179,7 +174,8 @@ per = df_dept_aboveNUM.iloc[0]['freq']/ sum(df_dept_aboveNUM['freq'])
 str_pie_dept1 = str(df_dept_aboveNUM.iloc[0]['담당과'])
 str_pie_dept2 = str(df_dept_aboveNUM.iloc[1]['담당과'])
 str_pie_dept3 = str(df_dept_aboveNUM.iloc[2]['담당과'])
-str_pie = f'이 그래프는 {year}년 부서별 민원 요청 비율을 보여주며, {str_pie_dept1}가 {per:.2%}로 가장 많은 민원을 받았습니다. {str_pie_dept2}와 {str_pie_dept3}가 그 뒤를 잇고 있으며, 일부 부서는 상대적으로 낮은 비율을 기록했습니다.'
+#str_pie = f'이 그래프는 {year}년 부서별 민원 요청 비율을 보여주며, {str_pie_dept1}가 {per:.2%}로 가장 많은 민원을 받았습니다. {str_pie_dept2}와 {str_pie_dept3}가 그 뒤를 잇고 있으며, 일부 부서는 상대적으로 낮은 비율을 기록했습니다.'
+str_pie = f'이 그래프는 {year}년 부서별 민원 요청 비율을 보여주며, {str_pie_dept1}가 {per}로 가장 많은 민원을 받았습니다. {str_pie_dept2}와 {str_pie_dept3}가 그 뒤를 잇고 있으며, 일부 부서는 상대적으로 낮은 비율을 기록했습니다.'
 st.caption(str_pie)
 ###############################################
 

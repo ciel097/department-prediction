@@ -2,9 +2,9 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-
 import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
+
 
 ######## 한글폰트 우리것으로 추가
 def unique(list):
