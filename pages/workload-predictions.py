@@ -14,7 +14,6 @@ def unique(list):
 def fontRegistered():
     font_dirs = './customFonts'
     font_files = fm.findSystemFonts(fontpaths=font_dirs)
-
     for font_file in font_files:
         fm.fontManager.addfont(font_file) 
     fm._load_fontmanager(try_read_cache=False)

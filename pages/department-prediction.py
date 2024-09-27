@@ -37,6 +37,7 @@ st.sidebar.page_link("pages/statics.py", label="민원 처리 정보 안내")
 st.sidebar.page_link("pages/workload-predictions.py", label="이 달의 민원 업무량 예측")
 ###########################################
 
+
 complaint = st.text_area("민원 내용을 입력하시면 담당부서를 예측해 드립니다.",height=100)
 
 # 모델 불러오기

@@ -23,6 +23,7 @@ fontNames = [f.name for f in fm.fontManager.ttflist]
 unique(fontNames)
 fontname = 'NanumGothic'
 plt.rc('font', family=fontname)
+
 ##########
 # color를 보기 좋은 색으로 설정
 #colors_5 = ['#F5A9A9','#F5BCA9', '#F5D0A9', '#F3E2A9'  ,'#D0F5A9' ,'#A9F5BC'  ,'#A9E2F3' ,'#A9D0F5' ,'#A9BCF5', '#A9A9F5']
@@ -175,7 +176,7 @@ str_pie_dept1 = str(df_dept_aboveNUM.iloc[0]['담당과'])
 str_pie_dept2 = str(df_dept_aboveNUM.iloc[1]['담당과'])
 str_pie_dept3 = str(df_dept_aboveNUM.iloc[2]['담당과'])
 #str_pie = f'이 그래프는 {year}년 부서별 민원 요청 비율을 보여주며, {str_pie_dept1}가 {per:.2%}로 가장 많은 민원을 받았습니다. {str_pie_dept2}와 {str_pie_dept3}가 그 뒤를 잇고 있으며, 일부 부서는 상대적으로 낮은 비율을 기록했습니다.'
-str_pie = f'이 그래프는 {year}년 부서별 민원 요청 비율을 보여주며, {str_pie_dept1}가 {per}로 가장 많은 민원을 받았습니다. {str_pie_dept2}와 {str_pie_dept3}가 그 뒤를 잇고 있으며, 일부 부서는 상대적으로 낮은 비율을 기록했습니다.'
+str_pie = f'이 그래프는 {year}년 부서별 민원 요청 비율을 보여주며, {str_pie_dept1}가 {per:.1%}로 가장 많은 민원을 받았습니다. {str_pie_dept2}와 {str_pie_dept3}가 그 뒤를 잇고 있습니다.'
 st.caption(str_pie)
 ###############################################
 

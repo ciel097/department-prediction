@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
 ####### 사이드바(한글로)
 st.sidebar.page_link("app.py", label="메인")
 st.sidebar.page_link("pages/department-prediction.py", label="민원 담당 부서 예측")
