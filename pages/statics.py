@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import matplotlib.font_manager as fm
 
+
 ######## 한글폰트 우리것으로 추가
 def unique(list):
     x = np.array(list)
@@ -23,7 +24,6 @@ fontNames = [f.name for f in fm.fontManager.ttflist]
 unique(fontNames)
 fontname = 'NanumGothic'
 plt.rc('font', family=fontname)
-
 ##########
 # color를 보기 좋은 색으로 설정
 #colors_5 = ['#F5A9A9','#F5BCA9', '#F5D0A9', '#F3E2A9'  ,'#D0F5A9' ,'#A9F5BC'  ,'#A9E2F3' ,'#A9D0F5' ,'#A9BCF5', '#A9A9F5']
@@ -178,6 +178,8 @@ str_pie_dept3 = str(df_dept_aboveNUM.iloc[2]['담당과'])
 #str_pie = f'이 그래프는 {year}년 부서별 민원 요청 비율을 보여주며, {str_pie_dept1}가 {per:.2%}로 가장 많은 민원을 받았습니다. {str_pie_dept2}와 {str_pie_dept3}가 그 뒤를 잇고 있으며, 일부 부서는 상대적으로 낮은 비율을 기록했습니다.'
 str_pie = f'이 그래프는 {year}년 부서별 민원 요청 비율을 보여주며, {str_pie_dept1}가 {per:.1%}로 가장 많은 민원을 받았습니다. {str_pie_dept2}와 {str_pie_dept3}가 그 뒤를 잇고 있습니다.'
 st.caption(str_pie)
+st.write('      ')
+st.write('      ')
 ###############################################
 
 # 원하는 연도의 월별 부서별 민원 요청수 그래프들(위 결과를 월별로 세부적으로 보기위해)
@@ -191,8 +193,9 @@ fig_mon_dept = plt.figure(figsize=(20, 12))
 plt.bar( df_mon['req_mon'], df_mon['mon_freq'],color=colors_blue )
 plt.xlim(0,13)
 plt.margins(x=0)
-plt.xticks(fontsize=20)
+plt.xticks([1,2,3,4,5,6,7,8,9,10,11,12],['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],fontsize=20)
 plt.yticks(fontsize=20)
+
 # 차트 제목 추가
 plt.title('월별 전체 민원 요청수('+ str(year) + '년기준)',fontsize=30,pad=20)
 
@@ -205,7 +208,8 @@ most_mon=df_mon['req_mon'][indx_mon]
 most_req = df_mon['mon_freq'][indx_mon] 
 str_comment_mon = f'이 그래프는 {year}년 월별 민원 요청 수를 나타내며, {most_mon}월에 민원이 가장 많이 발생하여 {most_req}건을 기록했습니다.'
 st.caption(str_comment_mon)
-st.write(' ')
+st.write('    ')
+st.write('    ')
 ############################################################
 # 월별 부서별 민원요청수
 searching_month = [1,2,3,4,5,6,7,8,9,10,11,12]
