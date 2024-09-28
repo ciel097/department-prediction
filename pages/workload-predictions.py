@@ -5,6 +5,7 @@ import numpy as np
 import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
 
+
 ######## 한글폰트 우리것으로 추가
 def unique(list):
     x = np.array(list)
@@ -23,7 +24,6 @@ unique(fontNames)
 fontname = 'NanumGothic'
 plt.rc('font', family=fontname)
 ########## 
-
 
 ## cmap  설정
 from matplotlib.colors import LinearSegmentedColormap
@@ -104,6 +104,12 @@ from datetime import datetime
 
 today = datetime.today()
 month_input = today.month
+##################################### 월 선택박스 추가 by Ju
+searching_month = [1,2,3,4,5,6,7,8,9,10,11,12]
+cur_mon = 9
+str_select_mon = '월 선택'
+month_input = st.selectbox(str_select_mon, searching_month,index=cur_mon-1)
+########################################
 
 predicted_counts = predict_all_departments(month_input)
 
