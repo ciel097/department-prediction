@@ -38,7 +38,6 @@ st.sidebar.page_link("pages/workload-predictions.py", label="이 달의 민원 �
 st.sidebar.page_link("pages/chatbot.py", label="AI 챗봇")
 ###########################################
 
-
 complaint = st.text_area("민원 내용을 입력하시면 담당부서를 예측해 드립니다.",height=100)
 
 # 모델 불러오기

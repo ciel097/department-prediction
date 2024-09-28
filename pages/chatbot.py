@@ -4,6 +4,7 @@
 #!pip install langchain_openai
 #!pip install langchain_community
 
+
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
 import openai
