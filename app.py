@@ -7,6 +7,7 @@ st.sidebar.page_link("app.py", label="메인")
 st.sidebar.page_link("pages/department-prediction.py", label="민원 담당 부서 예측")
 st.sidebar.page_link("pages/statics.py", label="민원 처리 정보 안내")
 st.sidebar.page_link("pages/workload-predictions.py", label="이 달의 민원 업무량 예측")
+st.sidebar.page_link("pages/chatbot.py", label="AI 챗봇")
 ###########################################
 st.header("민원 담당부서 :blue[예측] 시스템",divider='green')
 #st.subheader("이 시스템은공무원을 위한 시스템입니다.")
@@ -22,4 +23,7 @@ if st.button("민원 처리 정보 안내"):
 
 if st.button("이 달의 민원 업무량 예측"):
     st.switch_page("pages/workload-predictions.py")  
+
+if st.button("AI 챗봇"):
+    st.switch_page("pages/chatbot.py")
 
