@@ -45,7 +45,6 @@ df = pd.read_csv("saeol_data_all.csv")
 df['req_mon'] = pd.to_datetime(df['작성일']).dt.month # 한번 만들어지면 다음엔 주석처리할것
 df['req_year'] =pd.to_datetime(df['작성일']).dt.year # 한번 만들어지면 다음엔 주석처리할 것
 
-
 ####### 부서별 민원 처리 소요시간(업무량 예측 페이지와 겹치는 정보라 생략)
 #num_dep = [10,30,50]
 #num_rank = st.selectbox("부서수 선택", num_dep)

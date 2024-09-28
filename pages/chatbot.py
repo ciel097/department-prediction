@@ -18,6 +18,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import accuracy_score
 from joblib import load
 
+
 import matplotlib.font_manager as fm
 import numpy as np
 ######## 한글폰트 우리것으로 추가

@@ -51,7 +51,6 @@ st.sidebar.page_link("pages/chatbot.py", label="AI 챗봇")
 st.header("이달의 업무량 예측",divider='green')
 #st.subheader("이 시스템은공무원을 위한 시스템입니다.")
 
-
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
