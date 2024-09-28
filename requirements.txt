@@ -4,4 +4,7 @@ numpy
 streamlit
 scikit-learn
 joblib
+openai
+faiss-gpu
+langchain
 
