@@ -5,6 +5,6 @@ streamlit
 scikit-learn
 joblib
 openai
-faiss
 langchain
+faiss-cpu
 
