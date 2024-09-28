@@ -4,7 +4,7 @@
 #!pip install langchain_openai
 #!pip install langchain_community
 
-from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain.embeddings import OpenAIEmbeddings
 #from langchain.vectorstores import FAISS
 #import openai
 ##################################### add streamlit by Ju 240928
