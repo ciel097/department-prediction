@@ -26,4 +26,3 @@ if st.button("이 달의 민원 업무량 예측"):
 
 if st.button("AI 챗봇"):
     st.switch_page("pages/chatbot.py")
-
