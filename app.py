@@ -28,4 +28,3 @@ if st.button("AI 챗봇"):
     st.switch_page("pages/chatbot.py")
 
 
-
