@@ -1,11 +1,11 @@
 import openai
-import streamlit as st
 from openai import OpenAI
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.document_loaders import TextLoader
 from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddings
+import streamlit as st
 
 api_key = st.secrets["openai_key"]
 
