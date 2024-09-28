@@ -118,7 +118,7 @@ predicted_counts = predict_all_departments(month_input)
 
 figure1 = plt.figure(figsize=(25, 10))
 plt.bar(predicted_counts['담당과'], predicted_counts['민원'], color=distinct_colors(range(35)))
-plt.title(f"{month_input}월 민원 비중 예측",fontsize=32,pad=20)
+plt.title(f"2024년 {month_input}월 민원 비중 예측",fontsize=32,pad=20)
 plt.xlabel("담당과",fontsize=20)
 plt.ylabel("민원 비중",fontsize=20)
 plt.xticks(rotation=90,fontsize=20)

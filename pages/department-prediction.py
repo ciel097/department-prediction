@@ -10,7 +10,6 @@ from joblib import load
 import matplotlib.font_manager as fm
 import numpy as np
 
-
 ######## 한글폰트 우리것으로 추가
 def unique(list):
     x = np.array(list)
