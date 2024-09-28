@@ -6,4 +6,6 @@ scikit-learn
 joblib
 openai==0.27.8
 langchain
+langchain_openai 
+langchain_community
 faiss-cpu
