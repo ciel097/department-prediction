@@ -1,7 +1,7 @@
 pandas
 matplotlib
 numpy
-streamlit==1.31.1
+streamlit
 scikit-learn
 joblib
 openai==1.13.3
