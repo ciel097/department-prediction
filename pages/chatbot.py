@@ -64,7 +64,7 @@ st.sidebar.page_link("pages/chatbot.py", label="AI 챗봇")
 api_key = st.secrets["openai_key"] 
 
 embeddings = OpenAIEmbeddings(openai_api_key=api_key)
-db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
+db = FAISS.load_local("./faiss_index", embeddings, allow_dangerous_deserialization=True)
 
 
 def get_response_from_gpt(query, docs):
