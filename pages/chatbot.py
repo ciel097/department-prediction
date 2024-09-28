@@ -63,30 +63,6 @@ st.sidebar.page_link("pages/chatbot.py", label="AI 챗봇")
 
 api_key = st.secrets["openai_key"] 
 
-embeddings = OpenAIEmbeddings(openai_api_key=api_key)
-db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
+#embeddings = OpenAIEmbeddings(openai_api_key=api_key)
+#db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
 
-def get_response_from_gpt(query, docs):
-    context = "\n\n".join([doc.page_content for doc in docs])
-
-    openai.api_key = api_key
-    response = openai.chat.completions.create(
-        model="gpt-4o",
-        messages=[
-            {"role": "user", "content": f"{context}\n\n질문: {query}\n\n답변:"}
-        ]
-    )
-    return response.choices[0].message.content
-
-prompt = "서초구 민원 내용을 안내하는 친절한 챗봇 역할 수행:"
-
-user_input = st.text_area("챗봇에게 민원내용을 문의하시면 답변해 드립니다.",height=100)
-input = prompt + user_input
-
-if (st.button("검색")):
-  docs = db.similarity_search(user_input)
-  if docs:
-    response = get_response_from_gpt(input, docs)
-    st.write(response)
-  else:
-    st.write("관련 정보를 찾을 수 없습니다.")

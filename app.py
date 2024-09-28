@@ -15,6 +15,7 @@ st.caption("이 시스템은 민원 내용을 입력하면, 자동으로 관련�
 
 st.title(':green[예측]')
 
+
 if st.button("민원 담당 부서 예측"):
     st.switch_page("pages/department-prediction.py")
   
