@@ -24,6 +24,7 @@ fontname = 'NanumGothic'
 plt.rc('font', family=fontname)
 ########## 
 
+
 ## cmap  설정
 from matplotlib.colors import LinearSegmentedColormap
 data = np.random.rand(35) * 100

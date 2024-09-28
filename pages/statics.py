@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import matplotlib.font_manager as fm
 
-
 ######## 한글폰트 우리것으로 추가
 def unique(list):
     x = np.array(list)
