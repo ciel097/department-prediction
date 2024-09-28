@@ -4,7 +4,6 @@ numpy
 streamlit
 scikit-learn
 joblib
-openai
+openai==0.27.8
 langchain
 faiss-cpu
-
