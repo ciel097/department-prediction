@@ -4,18 +4,18 @@
 #!pip install langchain_openai
 #!pip install langchain_community
 
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.vectorstores import FAISS
-import openai
+#from langchain.embeddings import OpenAIEmbeddings
+#from langchain.vectorstores import FAISS
+#import openai
 ##################################### add streamlit by Ju 240928
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics import accuracy_score
+#from sklearn.model_selection import train_test_split
+#from sklearn.feature_extraction.text import TfidfVectorizer
+#from sklearn.metrics import accuracy_score
 from joblib import load
 
 
