@@ -9,4 +9,4 @@ openai
 openapi-schema-pydantic
 PyPDF2
 tiktoken
-FAISS-cpu
+faiss-cpu
