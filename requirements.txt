@@ -4,10 +4,13 @@ numpy
 streamlit
 scikit-learn
 joblib
-openai==1.13.3
-langchain==0.1.9
 langchain_community==0.0.24
 langchain_openai==0.0.8
-faiss-cpu==1.7.4
 pydantic==1.10.14
-
+langchain==0.0.256
+openai==0.27.8
+openapi-schema-pydantic==1.2.4
+PyPDF2==3.0.1
+tiktoken==0.4.0
+FAISS-cpu==1.7.4
+streamlit==1.25.0
