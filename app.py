@@ -27,4 +27,3 @@ if st.button("서리풀챗봇"):
     st.switch_page("pages/chatbot.py")
 
 
-
