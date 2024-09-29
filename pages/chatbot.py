@@ -16,7 +16,12 @@ from joblib import load
 import matplotlib.font_manager as fm
 import numpy as np
 
+
 from langchain.embeddings import OpenAIEmbeddings
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.vectorstores import Chroma
+from langchain.document_loaders import TextLoader
+from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddings
 from langchain.vectorstores import FAISS
 import openai 
 from openai import OpenAI
