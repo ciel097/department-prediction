@@ -4,9 +4,6 @@ numpy
 streamlit
 scikit-learn
 joblib
-langchain_community==0.0.24
-langchain_openai==0.0.8
-pydantic==1.10.14
 langchain==0.0.256
 openai==0.27.8
 openapi-schema-pydantic==1.2.4
