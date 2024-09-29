@@ -4,8 +4,7 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.document_loaders import TextLoader
-from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddings
-
+#from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddings
 ### by Ju 240929 start
 from matplotlib import font_manager, rc
 import pandas as pd
