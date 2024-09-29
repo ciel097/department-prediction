@@ -5,6 +5,8 @@ streamlit
 scikit-learn
 joblib
 langchain
+langchain_community
+langchain_openai
 openai
 openapi-schema-pydantic
 PyPDF2
