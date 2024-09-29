@@ -4,10 +4,9 @@ numpy
 streamlit
 scikit-learn
 joblib
-langchain==0.0.256
-openai==0.27.8
-openapi-schema-pydantic==1.2.4
-PyPDF2==3.0.1
-tiktoken==0.4.0
-FAISS-cpu==1.7.4
-streamlit==1.25.0
+langchain
+openai
+openapi-schema-pydantic
+PyPDF2
+tiktoken
+FAISS-cpu
