@@ -9,7 +9,7 @@ st.sidebar.page_link("pages/statics.py", label="민원 처리 정보 안내")
 st.sidebar.page_link("pages/workload-predictions.py", label="이 달의 민원 업무량 예측")
 st.sidebar.page_link("pages/chatbot.py", label="서리풀챗봇")
 ###########################################
-st.header("서리풀 민One Click 서비스",divider='white')
+st.header("서리풀 민One Click 서비스")
 #st.subheader("이 시스템은공무원을 위한 시스템입니다.")
 st.caption("이 시스템은 민원 내용을 입력하면, 자동으로 관련된 담당 부서를 예측하고 민원과 관련된 정보를 분석해 신속하고 효율적인 업무 처리를 지원합니다.")
 
