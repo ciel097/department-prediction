@@ -102,7 +102,8 @@ if (st.button("검색")):
   docs = db.similarity_search(user_input)
   if docs:
     response = get_response_from_gpt(input, docs)
-    st.write(response)
+#    st.write(response)
+    st.info(response)
   else:
     st.write("관련 정보를 찾을 수 없습니다.")
 
