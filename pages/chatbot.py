@@ -85,25 +85,24 @@ st.write(":gray[챗봇에게 민원내용을 문의하시면 답변해 드립니
 user_input = st.text_area(" ",height=100)
 input = prompt + user_input
 
-m = st.markdown("""
-<style>
-div.stButton > button:first-child {
-    background-color: #192943;
-    color:#FFFFFF;
-}
-div.stButton > button:hover {
-    background-color: #192943;
-    color:#C3C3C3;
-    }
-</style>""", unsafe_allow_html=True)
+#m = st.markdown("""
+#<style>
+#div.stButton > button:first-child {
+#    background-color: #192943;
+#    color:#FFFFFF;
+#}
+#div.stButton > button:hover {
+#    background-color: #192943;
+#    color:#C3C3C3;
+#    }
+#</style>""", unsafe_allow_html=True)
 
 
 if (st.button("검색")):
   docs = db.similarity_search(user_input)
   if docs:
     response = get_response_from_gpt(input, docs)
-#    st.write(response)
-    st.info(response)
+    st.write(response)
   else:
     st.write("관련 정보를 찾을 수 없습니다.")
 
