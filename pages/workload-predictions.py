@@ -48,7 +48,7 @@ st.sidebar.page_link("pages/workload-predictions.py", label="이 달의 민원 �
 st.sidebar.page_link("pages/chatbot.py", label="서리풀 챗봇")
 ###########################################
 
-st.header("이달의 업무량 예측",divider='black')
+st.header("이달의 업무량 예측")
 #st.subheader("이 시스템은공무원을 위한 시스템입니다.")
 
 import pandas as pd
