@@ -37,7 +37,7 @@ st.sidebar.page_link("app.py", label="메인")
 st.sidebar.page_link("pages/department-prediction.py", label="민원 담당 부서 예측")
 st.sidebar.page_link("pages/statics.py", label="민원 처리 정보 안내")
 st.sidebar.page_link("pages/workload-predictions.py", label="이 달의 민원 업무량 예측")
-st.sidebar.page_link("pages/chatbot.py", label="AI 챗봇")
+st.sidebar.page_link("pages/chatbot.py", label="서리풀 챗봇")
 ###########################################
 
 # csv 파일 읽어오기
