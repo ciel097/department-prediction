@@ -82,7 +82,7 @@ def get_response_from_gpt(query, docs):
 prompt = "서초구 민원 내용을 안내하는 친절한 챗봇 역할 수행:"
 
 st.write(":gray[챗봇에게 민원내용을 문의하시면 답변해 드립니다.]")
-user_input = st.text_area("챗봇에게 민원내용을 문의하시면 답변해 드립니다.",height=100)
+user_input = st.text_area(height=100)
 input = prompt + user_input
 
 if (st.button("검색")):
