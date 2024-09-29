@@ -138,3 +138,5 @@ per2 = predicted_counts.iloc[1]['민원']
 per3 = predicted_counts.iloc[2]['민원']
 str_comment = f"이번 달 민원 예측 결과, {str_dep1}가 전체 업무의 {per1:.2%}로 가장 높은 비중을 차지하며, 그 뒤를 {str_dep2}({per2:.2%})와 {str_dep3}({per3:.2%})이 따릅니다. 주요 부서들이 업무량을 크게 담당하는 가운데, 다양한 부서들이 고르게 참여할 것으로 예상됩니다."
 st.caption(str_comment)
+
+

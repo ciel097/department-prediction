@@ -44,7 +44,6 @@ complaint = st.text_area("민원 내용을 입력하시면 담당부서를 예�
 vectorizer = load('tfidf_vectorizer.joblib')
 loaded_model = load('model_mlp.joblib')
 
-
 # 민원 예시
 #complaint = t
 if (st.button("예측")):
